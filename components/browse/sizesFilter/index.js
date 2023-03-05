@@ -17,7 +17,7 @@ export default function SizesFilter({ sizes, sizeHandler }) {
       {show && (
         <div className={styles.filter__sizes}>
           {sizes.map((size, i) => (
-            <div
+            <div key={i}
               onClick={() =>
                 sizeHandler(existedSize ? `${existedSize}_${size}` : size)
               }

@@ -18,7 +18,7 @@ export default function Brands({ brands }) {
       {show && (
         <div className={styles.filter__sizes_wrap}>
           {brands.map((brand, index) => (
-            <button className={styles.filter__brand}>
+            <button className={styles.filter__brand} key={index}>
               <img src={`../../../images/brands/${brand}.png`} alt={brand} />
             </button>
           ))}

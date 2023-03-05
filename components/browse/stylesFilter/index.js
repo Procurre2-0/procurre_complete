@@ -17,7 +17,7 @@ export default function StyleFilter({ data, styleHandler, replaceQuery }) {
           {data.map((style, i) => {
             const check = replaceQuery("style", style);
             return (
-              <div
+              <div key={i}
                 className={styles.filter__sizes_size}
                 onClick={() => styleHandler(check.result)}
               >

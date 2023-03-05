@@ -32,7 +32,7 @@ export default function Menu() {
         </li>
         <div className={styles.menu__list}>
           {menuArray.map((item, i) => (
-            <li>
+            <li key={i}>
               <Link href={item.link}>
                 <a>
                   {i == 0 ? (

@@ -38,9 +38,9 @@ export default function ProductCard({ product }) {
         }}
       >
         {product.subProducts.map((p, i) => (
-          <SwiperSlide>
-            <div className={styles.product__item}>
-              <div className={styles.product__item_img}>
+          <SwiperSlide key={i}>
+            <div className={styles.product__item} >
+              <div  className={styles.product__item_img}>
                 <img src={p.images[0].url} alt="" />
               </div>
               <div className={styles.product__actions}>

@@ -1,0 +1,22 @@
+.layout {
+  min-height: 100vh;
+}
+
+.layout__container {
+  margin-top: 3rem;
+  padding: 1rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-grid-columns: 200px 1fr;
+      grid-template-columns: 200px 1fr;
+  gap: 3rem;
+}
+
+.layout__content {
+  width: 100%;
+  margin-top: 3rem;
+}
+/*# sourceMappingURL=styles.module.css.map */

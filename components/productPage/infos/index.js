@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 import Rating from "@mui/material/Rating";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import Link from "next/Link";
+import Link from "next/link";
 import { TbPlus, TbMinus } from "react-icons/tb";
 import { useEffect } from "react";
 import { BsHandbagFill, BsHeart } from "react-icons/bs";
@@ -15,6 +15,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, updateCart } from "../../../store/cartSlice";
 import { hideDialog, showDialog } from "../../../store/DialogSlice";
 import { signIn, useSession } from "next-auth/react";
+// import SingularSelect from "../../selects/SingularSelect";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 export default function Infos({ product, setActiveImg }) {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -24,7 +26,8 @@ export default function Infos({ product, setActiveImg }) {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const { cart } = useSelector((state) => ({ ...state }));
-
+console.log("size",size.size);
+console.log("size",router);
   useEffect(() => {
     dispatch(hideDialog());
   }, []);
@@ -150,10 +153,33 @@ export default function Infos({ product, setActiveImg }) {
           pieces available.
         </span>
         <div className={styles.infos__sizes}>
-          <h4>Select a Size : </h4>
-          <div className={styles.infos__sizes_wrap}>
+          <h4>Select a Size {size}: </h4>
+          
+          <FormControl fullWidth>
+            <InputLabel id="SizeInputLabel">Size</InputLabel>
+            <Select
+              labelId="Size"
+              id="SizeSelect"
+              value={size}
+              label="Size"
+              onChange={() => setSize(size.size)}
+            >
+              {product.sizes.map((size, i) => (
+              <Link key={i}
+                    href={`/product/${product.slug}?style=${router.query.style}&size=${i}`}
+                  >
+                <MenuItem key={i} value={size.size} >
+                  
+                  {size.size}
+                  
+                </MenuItem></Link>
+              ))}
+
+            </Select>
+          </FormControl>
+          {/* <div className={styles.infos__sizes_wrap}>
             {product.sizes.map((size, i) => (
-              <Link
+              <Link key={i}
                 href={`/product/${product.slug}?style=${router.query.style}&size=${i}`}
               >
                 <div
@@ -166,12 +192,12 @@ export default function Infos({ product, setActiveImg }) {
                 </div>
               </Link>
             ))}
-          </div>
+          </div> */}
         </div>
         <div className={styles.infos__colors}>
           {product.colors &&
             product.colors.map((color, i) => (
-              <span
+              <span key={i}
                 className={i == router.query.style ? styles.active_color : ""}
                 onMouseOver={() =>
                   setActiveImg(product.subProducts[i].images[0].url)

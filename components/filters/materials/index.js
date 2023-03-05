@@ -14,7 +14,7 @@ export default function Materials({ materials }) {
       {show && (
         <div>
           {materials.map((p, index) => (
-            <div className={styles.filter__sizes_wrap_size}>
+            <div className={styles.filter__sizes_wrap_size} key={index}>
               <input type="checkbox" name="pattern" id={p} />
               <label htmlFor={p}>{p}</label>
             </div>

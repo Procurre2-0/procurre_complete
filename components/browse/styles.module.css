@@ -1,0 +1,137 @@
+.filter {
+  padding: 1rem;
+}
+
+.filter h3 {
+  font-size: 17px;
+  font-weight: 600;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.filter h3 span svg {
+  fill: #333;
+  width: 10px;
+}
+
+.filter section ul {
+  margin-left: 1rem;
+}
+
+.filter section li {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.filter section li span {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.filter section li span svg {
+  width: 10px;
+  fill: #333;
+}
+
+.filter__sizes {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  margin-top: 10px;
+}
+
+.filter__sizes_size {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+
+.filter__sizes label {
+  font-size: 15px;
+}
+
+.filter__colors {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.filter__colors button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  -webkit-box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.filter__colors button:hover {
+  outline: 1px solid #000;
+  outline-offset: 3px;
+}
+
+.filter__brand {
+  background: transparent;
+  width: 100px;
+  height: 37px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  color: #222;
+}
+
+.filter__brand:hover {
+  border: 1px solid #000;
+}
+
+.filter__brand img {
+  height: 29px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.activeFilter {
+  border: 1px solid #222;
+}
+
+.activeFilterColor {
+  outline: 1px solid #000;
+  outline-offset: 3px;
+}
+/*# sourceMappingURL=styles.module.css.map */

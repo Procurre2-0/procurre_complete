@@ -1,0 +1,23 @@
+.stripe button {
+  margin-top: 1rem;
+  height: 45px;
+  width: 100%;
+  background: #000;
+  cursor: pointer;
+  border: 1px solid transparent;
+  color: #fff;
+  font-weight: 600;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.stripe button:hover {
+  background: transparent;
+  border-color: #222;
+  color: #000;
+}
+
+.stripe .error {
+  padding: 0;
+}
+/*# sourceMappingURL=styles.module.css.map */

@@ -1,0 +1,17 @@
+.backToTop {
+  width: 40px;
+  height: 40px;
+  background: #333;
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1rem;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.backToTop svg {
+  fill: #fff;
+}
+/*# sourceMappingURL=back.module.css.map */
