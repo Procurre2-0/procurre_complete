@@ -12,10 +12,13 @@ export const saveCart = async (cart) => {
 };
 export const saveAddress = async (address, userId) => {
   try {
+    console.log("sex",userId);
+    console.log("sexaddress",address);
     const { data } = await axios.post("/api/user/saveAddress", {
       address,
       userId,
     });
+    // console.log("sex2",userId);
     return data;
   } catch (error) {
     return error.response.data.message;

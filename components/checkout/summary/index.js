@@ -33,10 +33,11 @@ export default function Summary({
   };
   const placeOrderHandler = async () => {
     try {
-      if (paymentMethod == "") {
-        setOrder_Error("Please choose a payment method.");
-        return;
-      } else if (!selectedAddress) {
+      // if (paymentMethod == "") {
+      //   setOrder_Error("Please choose a payment method.");
+      //   return;
+      // } 
+      if (!selectedAddress) {
         setOrder_Error("Please choose a shipping address.");
         return;
       }

@@ -30,6 +30,7 @@ const initialValues = {
   country: "",
 };
 export default function Shipping({ user, addresses, setAddresses, profile }) {
+  console.log("shipping",addresses);
   const [shipping, setShipping] = useState(initialValues);
   const [visible, setVisible] = useState(user?.address.length ? false : true);
   const {
@@ -83,7 +84,10 @@ export default function Shipping({ user, addresses, setAddresses, profile }) {
     setShipping({ ...shipping, [name]: value });
   };
   const saveShippingHandler = async () => {
-    const res = await saveAddress(shipping);
+    console.log("saveShippingHandler",shipping);
+    console.log("oooooooooo",user._id);
+    const res = await saveAddress(shipping,user._id);
+    console.log("res.addresses",res.addresses);
     setAddresses(res.addresses);
   };
   const changeActiveHandler = async (id) => {
@@ -101,19 +105,20 @@ export default function Shipping({ user, addresses, setAddresses, profile }) {
           <h3>Shipping Informations</h3>
         </div>
       )}
+      
       <div className={styles.addresses}>
-        {addresses.map((address) => (
+        {addresses.map((address,i) => (
           <div style={{ position: "relative" }}>
             <div
               className={styles.address__delete}
-              onClick={() => deleteHandler(address._id)}
+              onClick={() => deleteHandler(addresses[0]._id)}
             >
               <IoIosRemoveCircleOutline />
             </div>
             <div
-              className={`${styles.address} ${address.active && styles.active}`}
-              key={address._id}
-              onClick={() => changeActiveHandler(address._id)}
+              className={`${styles.address} ${addresses[0].active && styles.active}`}
+              key={addresses[0]._id}
+              onClick={() => changeActiveHandler(addresses[0]._id)}
             >
               <div className={styles.address__side}>
                 <img src={profile ? user.user.image : user.image} alt="" />
@@ -121,29 +126,29 @@ export default function Shipping({ user, addresses, setAddresses, profile }) {
               <div className={styles.address__col}>
                 <span>
                   <FaIdCard />
-                  {address.firstName.toUpperCase()}{" "}
-                  {address.lastName.toUpperCase()}
+                  {addresses[0].firstName.toUpperCase()}{" "}
+                  {addresses[0].lastName.toUpperCase()}
                 </span>
                 <span>
                   <GiPhone />
-                  {address.phoneNumber}
+                  {addresses[0].phoneNumber}
                 </span>
               </div>
               <div className={styles.address__col}>
                 <span>
                   <FaMapMarkerAlt />
-                  {address.address1}
+                  {addresses[0].address1}
                 </span>
-                <span>{address.address2}</span>
+                <span>{addresses[0].address2}</span>
                 <span>
-                  {address.city},{address.state},{address.country}
+                  {addresses[0].city},{addresses[0].state},{addresses[0].country}
                 </span>
-                <span>{address.zipCode}</span>
+                <span>{addresses[0].zipCode}</span>
               </div>
               <span
                 className={styles.active__text}
                 style={{
-                  display: `${!address.active && "none"}`,
+                  display: `${!addresses[0].active && "none"}`,
                 }}
               >
                 Active
