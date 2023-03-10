@@ -17,17 +17,25 @@ import { hideDialog, showDialog } from "../../../store/DialogSlice";
 import { signIn, useSession } from "next-auth/react";
 // import SingularSelect from "../../selects/SingularSelect";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import Units from "./Units";
 export default function Infos({ product, setActiveImg }) {
   const router = useRouter();
   const dispatch = useDispatch();
   const { data: session } = useSession();
   const [size, setSize] = useState(router.query.size);
+  const [sizeString, setSizeString] = useState("");
   const [qty, setQty] = useState(1);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const { cart } = useSelector((state) => ({ ...state }));
-console.log("size",size.size);
-console.log("size",router);
+
+  console.log("size",product.sizes);
+  console.log("router",router);
+
+  const handleSizeChange = (event) => {
+    event.preventDefault();
+    
+  };
   useEffect(() => {
     dispatch(hideDialog());
   }, []);
@@ -36,6 +44,8 @@ console.log("size",router);
     setQty(1);
   }, [router.query.style]);
   useEffect(() => {
+    setSize(router.query.size)
+    setSizeString(product.sizes[router.query.size]?.size);
     if (qty > product.quantity) {
       setQty(product.quantity);
     }
@@ -153,47 +163,31 @@ console.log("size",router);
           pieces available.
         </span>
         <div className={styles.infos__sizes}>
-          <h4>Select a Size {size}: </h4>
-          
+          <h4>Select a Size : </h4>
           <FormControl fullWidth>
             <InputLabel id="SizeInputLabel">Size</InputLabel>
-            <Select
+            <Select 
               labelId="Size"
               id="SizeSelect"
-              value={size}
+              value={sizeString}
               label="Size"
-              onChange={() => setSize(size.size)}
+              // onChange={handleSizeChange}
             >
-              {product.sizes.map((size, i) => (
-              <Link key={i}
+              {product.sizes.map((productSize, i) => (
+              
+                <MenuItem key={i} value={productSize.size}>
+                  <Link 
                     href={`/product/${product.slug}?style=${router.query.style}&size=${i}`}
                   >
-                <MenuItem key={i} value={size.size} >
-                  
-                  {size.size}
-                  
-                </MenuItem></Link>
+                  {productSize.size}
+                  </Link>
+                </MenuItem>
               ))}
 
             </Select>
           </FormControl>
-          {/* <div className={styles.infos__sizes_wrap}>
-            {product.sizes.map((size, i) => (
-              <Link key={i}
-                href={`/product/${product.slug}?style=${router.query.style}&size=${i}`}
-              >
-                <div
-                  className={`${styles.infos__sizes_size} ${
-                    i == router.query.size && styles.active_size
-                  }`}
-                  onClick={() => setSize(size.size)}
-                >
-                  {size.size}
-                </div>
-              </Link>
-            ))}
-          </div> */}
         </div>
+        <Units/>
         <div className={styles.infos__colors}>
           {product.colors &&
             product.colors.map((color, i) => (

@@ -9,6 +9,7 @@ export default function Main({ searchHandler }) {
   const router = useRouter();
   const [query, setQuery] = useState(router.query.search || "");
   const { cart } = useSelector((state) => ({ ...state }));
+  console.log("cart",cart);
   const handleSearch = (e) => {
     e.preventDefault();
     if (router.pathname !== "/browse") {
@@ -41,7 +42,7 @@ export default function Main({ searchHandler }) {
         <Link href="/cart">
           <a className={styles.cart}>
             <FaOpencart />
-            <span>{cart.cartItems.length}</span>
+            <span>0</span>
           </a>
         </Link>
       </div>
