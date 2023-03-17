@@ -26,7 +26,7 @@ export default function orders({ user, tab, orders }) {
                 key={i}
                 className={
                   slugify(link.name, { lower: true }) ==
-                  router.query.q.split("__")[0]
+                  router.query.q?.split("__")[0]
                     ? styles.active
                     : ""
                 }
@@ -94,10 +94,13 @@ export default function orders({ user, tab, orders }) {
 }
 export async function getServerSideProps(ctx) {
   const { query, req } = ctx;
+  console.log("filterctxreq",req);
+  console.log("filterctx",ctx);
   const session = await getSession({ req });
   const tab = query.tab || 0;
   //------------
-  const filter = query.q.split("__")[1];
+  const filter = query.q?.split("__")[1];
+  
   let orders = [];
   if (!filter) {
     orders = await Order.find({ user: session?.user.id })
