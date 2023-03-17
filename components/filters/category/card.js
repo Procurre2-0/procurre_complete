@@ -36,8 +36,8 @@ export default function Card({ category, subCategories }) {
         <ul>
           {subCategories.length &&
             subCategories[0].parent._id == category._id &&
-            subCategories.map((s) => (
-              <li
+            subCategories.map((s,i) => (
+              <li key={i}
                 onClick={() => {
                   router.push({
                     pathname: path,

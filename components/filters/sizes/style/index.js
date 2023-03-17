@@ -15,7 +15,7 @@ export default function Style() {
       {show && (
         <div>
           {styles.map((style, index) => (
-            <div className={styless.filter__sizes_wrap_size}>
+            <div className={styless.filter__sizes_wrap_size} key={index}>
               <input type="checkbox" name="style" id={style} />
               <label htmlFor={style}>{style}</label>
             </div>

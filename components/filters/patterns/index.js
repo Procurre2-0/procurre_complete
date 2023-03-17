@@ -14,7 +14,7 @@ export default function Patterns({ patterns }) {
       {show && (
         <div>
           {patterns.map((p, index) => (
-            <div className={styles.filter__sizes_wrap_size}>
+            <div className={styles.filter__sizes_wrap_size} key={index}>
               <input type="checkbox" name="pattern" id={p} />
               <label htmlFor={p}>{p}</label>
             </div>

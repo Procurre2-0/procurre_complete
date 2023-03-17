@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 import Rating from "@mui/material/Rating";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import Link from "next/Link";
+import Link from "next/link";
 import { TbPlus, TbMinus } from "react-icons/tb";
 import { useEffect } from "react";
 import { BsHandbagFill, BsHeart } from "react-icons/bs";
@@ -15,16 +15,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, updateCart } from "../../../store/cartSlice";
 import { hideDialog, showDialog } from "../../../store/DialogSlice";
 import { signIn, useSession } from "next-auth/react";
+// import SingularSelect from "../../selects/SingularSelect";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import Units from "./Units";
 export default function Infos({ product, setActiveImg }) {
   const router = useRouter();
   const dispatch = useDispatch();
   const { data: session } = useSession();
   const [size, setSize] = useState(router.query.size);
+  const [sizeString, setSizeString] = useState("");
   const [qty, setQty] = useState(1);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const { cart } = useSelector((state) => ({ ...state }));
 
+  console.log("size",product.sizes);
+  console.log("router",router);
+
+  const handleSizeChange = (event) => {
+    event.preventDefault();
+    
+  };
   useEffect(() => {
     dispatch(hideDialog());
   }, []);
@@ -33,6 +44,8 @@ export default function Infos({ product, setActiveImg }) {
     setQty(1);
   }, [router.query.style]);
   useEffect(() => {
+    setSize(router.query.size)
+    setSizeString(product.sizes[router.query.size]?.size);
     if (qty > product.quantity) {
       setQty(product.quantity);
     }
@@ -151,27 +164,34 @@ export default function Infos({ product, setActiveImg }) {
         </span>
         <div className={styles.infos__sizes}>
           <h4>Select a Size : </h4>
-          <div className={styles.infos__sizes_wrap}>
-            {product.sizes.map((size, i) => (
-              <Link
-                href={`/product/${product.slug}?style=${router.query.style}&size=${i}`}
-              >
-                <div
-                  className={`${styles.infos__sizes_size} ${
-                    i == router.query.size && styles.active_size
-                  }`}
-                  onClick={() => setSize(size.size)}
-                >
-                  {size.size}
-                </div>
-              </Link>
-            ))}
-          </div>
+          <FormControl fullWidth>
+            <InputLabel id="SizeInputLabel">Size</InputLabel>
+            <Select 
+              labelId="Size"
+              id="SizeSelect"
+              value={sizeString}
+              label="Size"
+              // onChange={handleSizeChange}
+            >
+              {product.sizes.map((productSize, i) => (
+              
+                <MenuItem key={i} value={productSize.size}>
+                  <Link 
+                    href={`/product/${product.slug}?style=${router.query.style}&size=${i}`}
+                  >
+                  {productSize.size}
+                  </Link>
+                </MenuItem>
+              ))}
+
+            </Select>
+          </FormControl>
         </div>
+        <Units/>
         <div className={styles.infos__colors}>
           {product.colors &&
             product.colors.map((color, i) => (
-              <span
+              <span key={i}
                 className={i == router.query.style ? styles.active_color : ""}
                 onMouseOver={() =>
                   setActiveImg(product.subProducts[i].images[0].url)

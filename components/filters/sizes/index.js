@@ -16,7 +16,7 @@ export default function SizesFilter({ sizes }) {
       {show && (
         <div className={styles.filter__sizes_wrap}>
           {sizes.map((size, index) => (
-            <Size size={size} />
+            <Size size={size} key={index}/>
           ))}
         </div>
       )}

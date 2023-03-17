@@ -22,7 +22,7 @@ export default function PatternsFilter({
           {patterns.map((pattern, i) => {
             const check = replaceQuery("pattern", pattern);
             return (
-              <label
+              <label key={i}
                 htmlFor={pattern}
                 className={styles.filter__sizes_size}
                 onClick={() => patternHandler(check.result)}

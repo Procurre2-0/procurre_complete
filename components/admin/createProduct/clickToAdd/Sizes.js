@@ -74,9 +74,10 @@ export default function Sizes({ sizes, product, setProduct }) {
               />
               <input
                 type="number"
+                // step="0.0001"
                 name="price"
                 placeholder={noSize ? "Product Price" : "Size Price"}
-                min={1}
+                min={0}
                 value={size.price}
                 onChange={(e) => handleSize(i, e)}
               />

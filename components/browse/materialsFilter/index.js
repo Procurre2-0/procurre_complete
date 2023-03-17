@@ -21,7 +21,7 @@ export default function MaterialsFilter({
           {materials.map((material, i) => {
             const check = replaceQuery("material", material);
             return (
-              <label
+              <label key={i}
                 htmlFor={material}
                 className={styles.filter__sizes_size}
                 onClick={() => materialHandler(check.result)}

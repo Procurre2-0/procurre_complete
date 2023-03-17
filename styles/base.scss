@@ -108,17 +108,14 @@ $cubic-bezier: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
   }
 }
-.mainSwiper,
-.user__swiper,
-.flashDeals__swiper,
-.offers_swiper {
+.mainSwiper{
   .swiper {
     border-radius: 10px !important;
     overflow: hidden !important;
   }
 
   .swiper-slide img {
-    height: 300px !important;
+    height: 450px !important;
     border-radius: 10px !important;
     box-shadow: $shadow-1 !important;
   }
@@ -149,15 +146,15 @@ $cubic-bezier: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     right: -13px;
   }
 }
-.mainSwiper {
-  .swiper-slide {
-    img {
-      // object-fit: contain;
-    }
-  }
-}
+// .mainSwiper {
+//   .swiper-slide {
+//     img {
+//       // object-fit: contain;
+//     }
+//   }
+// }
 .offers_swiper {
-  max-width: 700px;
+  max-width: 800px;
   transform: translateX(35%);
   @media (max-width: 980px) {
     transform: translateX(1%);
@@ -169,65 +166,13 @@ $cubic-bezier: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     height: 100%;
   }
 
-  .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-    /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-    width: 150px !important;
-    border-radius: 10px !important;
-    height: 90% !important;
-    margin-top: 0.6rem !important;
-    box-shadow: $shadow-1;
-    &:hover {
-      transform: scale(1.03);
-      transition: 0.2s;
-    }
-    span {
-      position: absolute;
-      color: #fff;
-      &:first-of-type {
-        bottom: 10px;
-        width: 90px;
-        height: 25px;
-        border-radius: 50px;
-        font-size: 16px;
-        font-weight: 600;
-        background: $yellow-color;
-      }
-      &:last-of-type {
-        font-style: italic;
-        top: -5px;
-        right: -5px;
-        background: $redish-color;
-        height: 40px;
-        width: 40px;
-        border-radius: 50%;
-        display: grid;
-        place-items: center;
-        font-size: 16px;
-        font-weight: 600;
-        box-shadow: $shadow-1;
-      }
-    }
-  }
+
 
   .swiper-slide img {
     position: absolute;
     top: 0;
     width: 100%;
+    
     height: 100% !important;
     object-fit: cover !important;
   }
@@ -235,41 +180,22 @@ $cubic-bezier: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: none;
   }
 }
-.user__swiper {
-  position: relative;
-  margin-left: 2rem;
-  .swiper-slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 18px;
-    font-size: 22px;
-    font-weight: bold;
-    color: #fff;
-    img {
-      height: 240px !important;
-    }
-  }
-}
-.flashDeals__swiper {
-  .swiper-slide {
-    img {
-      border-radius: 0 !important;
-      height: 320px !important;
-    }
-  }
-  .swiper-button-next,
+
+.flashDeals__swiper{
   .swiper-button-prev {
-    top: 35%;
+    top: 200px;
   }
-  @media (max-width: 450px) {
-    .swiper-button-next,
-    .swiper-button-prev {
-      display: grid !important;
-    }
+  .swiper-button-next {
+    top: 200px;
   }
 }
 .products__swiper {
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
   .swiper-button-next,
   .swiper-button-prev {
     background: #fff;
@@ -301,6 +227,6 @@ $cubic-bezier: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
   }
 }
-.adminproduct__swiper {
-}
+// .adminproduct__swiper {
+// }
 //-------------Swipers------

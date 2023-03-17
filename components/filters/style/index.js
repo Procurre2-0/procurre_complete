@@ -14,7 +14,7 @@ export default function Style({ data }) {
       {show && (
         <div>
           {data.map((style, index) => (
-            <div className={styles.filter__sizes_wrap_size}>
+            <div className={styles.filter__sizes_wrap_size} key={index}>
               <input type="checkbox" name="style" id={style} />
               <label htmlFor={style}>{style}</label>
             </div>

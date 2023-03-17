@@ -15,7 +15,7 @@ export default function ColorsFilter({ colors, colorHandler, replaceQuery }) {
           {colors.map((color, i) => {
             const check = replaceQuery("color", color);
             return (
-              <button
+              <button key={i}
                 style={{ background: `${color}` }}
                 className={check.active ? styles.activeFilterColor : ""}
                 onClick={() => colorHandler(check.result)}
