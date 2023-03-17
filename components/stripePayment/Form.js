@@ -31,15 +31,15 @@ export default function Form({ total, order_id }) {
     });
     if (!error) {
       try {
-        const { id } = paymentMethod;
-        const res = await axios.post(`/api/order/${order_id}/payWithStripe`, {
-          amount: total,
-          id,
-        });
-        console.log(res);
-        if (res.data.success) {
-          window.location.reload(false);
-        }
+        // const { id } = paymentMethod;
+        // const res = await axios.post(`/api/order/${order_id}/payWithStripe`, {
+        //   amount: total,
+        //   id,
+        // });
+        // console.log(res);
+        // if (res.data.success) {
+        //   window.location.reload(false);
+        // }
       } catch (error) {
         setError(error);
       }
