@@ -39,7 +39,6 @@ export default function home({ country, products }) {
             <Category />
           </div>
           <Testimonials />
-          <ProductsSwiper products={women_swiper} />
           <div className={styles.products}>
             {products.map((product) => (
               <ProductCard product={product} key={product._id} />
@@ -67,7 +66,7 @@ export async function getServerSideProps() {
       products: JSON.parse(JSON.stringify(products)),
       //country: { name: data.name, flag: data.flag.emojitwo },
       country: {
-        name: "Morocco",
+        name: "India",
         flag: "https://cdn-icons-png.flaticon.com/512/197/197551.png?w=360",
       },
     },

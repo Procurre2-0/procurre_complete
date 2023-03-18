@@ -19,20 +19,20 @@ export default function Top({ country }) {
             <span>{country?.name} / USD</span>
           </li>
           <li className={styles.li}>
-            <MdSecurity />
-            <span>Buyer Protection</span>
+            <a href="https://www.procurre.org/about" target="_blank">
+              <span>About us</span>
+            </a>
           </li>
           <li className={styles.li}>
-            <span>Customer Service</span>
+            <a href="https://www.procurre.org/gallery-1-2" target="_blank">
+              {" "}
+              <span>Products</span>
+            </a>
           </li>
           <li className={styles.li}>
-            <span>Help</span>
-          </li>
-          <li className={styles.li}>
-            <BsSuitHeart />
-            <Link href="/profile/whishlist">
-              <span>Whishlist</span>
-            </Link>
+            <a href="https://www.procurre.org/contact" target="_blank">
+              <span>Contact us</span>
+            </a>
           </li>
           <li
             className={styles.li}
