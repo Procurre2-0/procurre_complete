@@ -29,12 +29,11 @@ export default function Infos({ product, setActiveImg }) {
   const [success, setSuccess] = useState("");
   const { cart } = useSelector((state) => ({ ...state }));
 
-  console.log("size",product.sizes);
-  console.log("router",router);
+  console.log("size", product.sizes);
+  console.log("router", router);
 
   const handleSizeChange = (event) => {
     event.preventDefault();
-    
   };
   useEffect(() => {
     dispatch(hideDialog());
@@ -44,7 +43,7 @@ export default function Infos({ product, setActiveImg }) {
     setQty(1);
   }, [router.query.style]);
   useEffect(() => {
-    setSize(router.query.size)
+    setSize(router.query.size);
     setSizeString(product.sizes[router.query.size]?.size);
     if (qty > product.quantity) {
       setQty(product.quantity);
@@ -166,7 +165,7 @@ export default function Infos({ product, setActiveImg }) {
           <h4>Select a Size : </h4>
           <FormControl fullWidth>
             <InputLabel id="SizeInputLabel">Size</InputLabel>
-            <Select 
+            <Select
               labelId="Size"
               id="SizeSelect"
               value={sizeString}
@@ -174,24 +173,23 @@ export default function Infos({ product, setActiveImg }) {
               // onChange={handleSizeChange}
             >
               {product.sizes.map((productSize, i) => (
-              
                 <MenuItem key={i} value={productSize.size}>
-                  <Link 
+                  <Link
                     href={`/product/${product.slug}?style=${router.query.style}&size=${i}`}
                   >
-                  {productSize.size}
+                    {productSize.size}
                   </Link>
                 </MenuItem>
               ))}
-
             </Select>
           </FormControl>
         </div>
-        <Units/>
+        <Units />
         <div className={styles.infos__colors}>
           {product.colors &&
             product.colors.map((color, i) => (
-              <span key={i}
+              <span
+                key={i}
                 className={i == router.query.style ? styles.active_color : ""}
                 onMouseOver={() =>
                   setActiveImg(product.subProducts[i].images[0].url)
@@ -233,7 +231,6 @@ export default function Infos({ product, setActiveImg }) {
         {success && <span className={styles.success}>{success}</span>}
         <Share />
         <Accordian details={[product.description, ...product.details]} />
-        <SimillarSwiper />
       </div>
     </div>
   );
