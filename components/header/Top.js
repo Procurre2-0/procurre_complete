@@ -20,7 +20,7 @@ export default function Top({ country }) {
           </li>
           <li className={styles.li}>
             <a href="https://www.procurre.org/about" target="_blank">
-              <span>About us</span>
+              <span>About Us</span>
             </a>
           </li>
           <li className={styles.li}>
@@ -31,7 +31,7 @@ export default function Top({ country }) {
           </li>
           <li className={styles.li}>
             <a href="https://www.procurre.org/contact" target="_blank">
-              <span>Contact us</span>
+              <span>Contact Us</span>
             </a>
           </li>
           <li
