@@ -6,9 +6,7 @@ import Link from "next/link";
 import { TbPlus, TbMinus } from "react-icons/tb";
 import { useEffect } from "react";
 import { BsHandbagFill, BsHeart } from "react-icons/bs";
-import Share from "./share";
 import Accordian from "./Accordian";
-import SimillarSwiper from "./SimillarSwiper";
 import axios from "axios";
 import DialogModal from "../../dialogModal";
 import { useDispatch, useSelector } from "react-redux";
@@ -202,17 +200,6 @@ export default function Infos({ product, setActiveImg }) {
               </span>
             ))}
         </div>
-        <div className={styles.infos__qty}>
-          <button onClick={() => qty > 1 && setQty((prev) => prev - 1)}>
-            <TbMinus />
-          </button>
-          <span>{qty}</span>
-          <button
-            onClick={() => qty < product.quantity && setQty((prev) => prev + 1)}
-          >
-            <TbPlus />
-          </button>
-        </div>
         <div className={styles.infos__actions}>
           <button
             disabled={product.quantity < 1}
@@ -229,7 +216,7 @@ export default function Infos({ product, setActiveImg }) {
         </div>
         {error && <span className={styles.error}>{error}</span>}
         {success && <span className={styles.success}>{success}</span>}
-        <Share />
+        {/* <Share /> */}
         <Accordian details={[product.description, ...product.details]} />
       </div>
     </div>
