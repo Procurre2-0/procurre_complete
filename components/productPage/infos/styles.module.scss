@@ -22,7 +22,7 @@
     font-size: 14px;
   }
   &__price {
-    color: #fa6338;
+    color: $green-color;
     display: flex;
     align-items: center;
     h3 {
@@ -120,10 +120,10 @@
     }
   }
   &__actions {
-    @media (min-width: 1160px) {
-      display: flex;
-      gap: 1rem;
-    }
+    // @media (min-width: 1160px) {
+    //   display: flex;
+    //   gap: 1rem;
+    // }
     button {
       margin-top: 1rem;
       display: flex;
@@ -143,29 +143,38 @@
         transform: translateY(-3px);
       }
       &:first-of-type {
-        background-image: linear-gradient(
-          to top,
-          #f3e7e9 0%,
-          #e3eeff 99%,
-          #e3eeff 100%
-        );
-      }
-      &:last-of-type {
+        width: 100%;
         border: 1px solid #000;
-        background: #222;
-        color: #fff;
-        svg {
-          margin-top: 5px;
-        }
-        @media (min-width: 1160px) {
-          width: 300px;
-        }
-        &:hover {
-          background: transparent;
-          border: 1px solid #333;
-          color: #333;
-        }
+          background: #222;
+          color: #fff;
+          svg {
+            margin-top: 5px;
+          }
+          // @media (min-width: 1160px) {
+          //   width: 300px;
+          // }
+          &:hover {
+            background: transparent;
+            border: 1px solid #333;
+            color: #333;
+          }
       }
+      // &:last-of-type {
+      //   border: 1px solid #000;
+      //   background: #222;
+      //   color: #fff;
+      //   svg {
+      //     margin-top: 5px;
+      //   }
+      //   @media (min-width: 1160px) {
+      //     width: 300px;
+      //   }
+      //   &:hover {
+      //     background: transparent;
+      //     border: 1px solid #333;
+      //     color: #333;
+      //   }
+      // }
     }
   }
   &__accordian {

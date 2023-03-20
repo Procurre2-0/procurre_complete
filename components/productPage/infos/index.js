@@ -125,7 +125,6 @@ export default function Infos({ product, setActiveImg }) {
       <DialogModal />
       <div className={styles.infos__container}>
         <h1 className={styles.infos__name}>{product.name}</h1>
-        <h2 className={styles.infos__sku}>{product.sku}</h2>
         <div className={styles.infos__rating}>
           <Rating
             name="half-rating-read"
@@ -209,10 +208,10 @@ export default function Infos({ product, setActiveImg }) {
             <BsHandbagFill />
             <b>ADD TO CART</b>
           </button>
-          <button onClick={() => handleWishlist()}>
+          {/* <button onClick={() => handleWishlist()}>
             <BsHeart />
             WISHLIST
-          </button>
+          </button> */}
         </div>
         {error && <span className={styles.error}>{error}</span>}
         {success && <span className={styles.success}>{success}</span>}
