@@ -15,10 +15,12 @@
 
 .product__main {
   position: relative;
-  display: -ms-grid;
+  /* display: -ms-grid; */
   display: grid;
   margin-top: 1rem;
   gap: 1rem;
+  /* grid-template-rows: 6fr 4fr; */
+  grid-template-columns: 8fr 4fr;
 }
 
 @media (min-width: 800px) {

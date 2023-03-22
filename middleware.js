@@ -1,5 +1,7 @@
 import { getToken } from "next-auth/jwt";
 import { NextResponse } from "next/server";
+import Head from "next/head";
+import { useRouter } from "next/router";
 export async function middleware(req) {
   const { pathname, origin } = req.nextUrl;
 
@@ -21,4 +23,19 @@ export async function middleware(req) {
     if (!session) return NextResponse.redirect(`${origin}`);
     if (session.role !== "admin") return NextResponse.redirect(`${origin}`);
   }
+  // if (pathname.startsWith("/product")) {
+  //   return (
+  //     <>
+  //       <Head>
+  //         <style>
+  //           {`
+  //     body {
+  //       zoom: 1;
+  //     }
+  //   `}
+  //         </style>
+  //       </Head>
+  //     </>
+  //   );
+  // }
 }

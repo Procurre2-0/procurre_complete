@@ -30,9 +30,12 @@ export default function Infos({ product, setActiveImg }) {
   console.log("size", product.sizes);
   console.log("router", router);
 
-  const handleSizeChange = (event) => {
-    event.preventDefault();
-  };
+  // const handleSizeChange = (event) => {
+  //   router.push(
+  //     `/product/${product.slug}?style=${router.query.style}&size=${event.target.i}`
+  //   );
+  //   event.preventDefault();
+  // };
   useEffect(() => {
     dispatch(hideDialog());
   }, []);
@@ -131,11 +134,12 @@ export default function Infos({ product, setActiveImg }) {
             defaultValue={product.rating}
             precision={0.5}
             readOnly
-            style={{ color: "#FACF19" }}
+            style={{ color: "green" }}
           />
           ({product.numReviews}
           {product.numReviews == 1 ? " review" : " reviews"})
         </div>
+        <div className={styles.infos__desc}>{product.description}</div>
         <div className={styles.infos__price}>
           {!size ? <h2>{product.priceRange}</h2> : <h1>{product.price}$</h1>}
           {product.discount > 0 ? (
@@ -170,12 +174,21 @@ export default function Infos({ product, setActiveImg }) {
               // onChange={handleSizeChange}
             >
               {product.sizes.map((productSize, i) => (
-                <MenuItem key={i} value={productSize.size}>
-                  <Link
+                <MenuItem
+                  key={i}
+                  value={productSize.size}
+                  onClick={() => {
+                    router.push(
+                      `/product/${product.slug}?style=${router.query.style}&size=${i}`
+                    );
+                  }}
+                >
+                  {/* <Link
+                    style={{ width: "100%" }}
                     href={`/product/${product.slug}?style=${router.query.style}&size=${i}`}
-                  >
-                    {productSize.size}
-                  </Link>
+                  > */}
+                  {productSize.size}
+                  {/* </Link> */}
                 </MenuItem>
               ))}
             </Select>

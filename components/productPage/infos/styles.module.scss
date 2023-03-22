@@ -8,7 +8,8 @@
     max-width: 340px;
   }
   &__name {
-    font-size: 14px;
+    color: #333;
+    // font-size: 14px;
     font-weight: normal;
   }
   &__sku {
@@ -21,8 +22,12 @@
     gap: 2px;
     font-size: 14px;
   }
+  &__desc{
+    margin: 12px 0;
+    color:#666
+  }
   &__price {
-    color: $green-color;
+    color: #333;
     display: flex;
     align-items: center;
     h3 {
@@ -220,13 +225,8 @@
 
 .input{
   margin-top: 10px;
-  // display:flex;
-  // flex-direction: column;
-    // align-items: center;
-    // justify-content: center;
+
   input {
-    width: 100%;
-    // flex: 1;
     display: block;
     // width: 100% !important;
     padding: 10px;
@@ -247,17 +247,14 @@
     }
   }
   &__dropdown{
-    // display: flex;
-    // position: absolute;
-    // z-index: 999;
-    // flex:1;
-    // align-items: center;
-    // justify-content: center;
+    position: absolute;
+    // width: var(--row-width);
   }
 }
 
 
 .row {
+  // --row-width: calc(100%):
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -295,5 +292,3 @@
   }
 
 }
-
-

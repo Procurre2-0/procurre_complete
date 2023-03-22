@@ -1,12 +1,14 @@
 * {
   margin: 0;
   box-sizing: border-box;
+  // background-color: grey;
   &:before,
   &:after {
     box-sizing: border-box;
   }
 }
 body {
+  // zoom: 0.9;
   font-family: sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;

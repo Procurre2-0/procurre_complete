@@ -50,8 +50,8 @@ export default function ProductCard({ product }) {
         )}
         <div className={styles.product__infos}>
           <h1>
-            {product.name.length > 45
-              ? `${product.name.substring(0, 45)}...`
+            {product.name.length > 30
+              ? `${product.name.substring(0, 30)}...`
               : product.name}
           </h1>
           <span>
