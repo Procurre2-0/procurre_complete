@@ -40,9 +40,8 @@ export default function product({ product, related }) {
           </div>
           <Try />
           <Reviews product={product} />
-          {/*
+
           <ProductsSwiper products={related} />
-          */}
         </div>
       </div>
     </>

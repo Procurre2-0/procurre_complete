@@ -12,8 +12,9 @@ export default function ReviewCard() {
           <div className={styles.reviews__card_single}>
             <Rating
               name="half-rating-read"
-              defaultValue={2.5}
-              precision={0.5}
+              readOnly
+              defaultValue={4}
+              precision={1}
               style={{ color: "green" }}
             />
             <p>Excellent</p>

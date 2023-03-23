@@ -231,6 +231,19 @@ export default function Infos({ product, setActiveImg }) {
         {/* <Share /> */}
         <Accordian details={[product.description, ...product.details]} />
       </div>
+      <div>a</div>
+      <div>anbaosin</div>
+      <div>anbaosin</div>
+      <div>anbaosin</div>
+      <div>anbaosin</div>
+      <div>anbaosin</div>
+      <div>anbaosin</div>
+      <div>anbaosin</div>
+      <div>anbaosin</div>
+      <div>anbaosin</div>
+      <div>anbaosin</div>
+      <div>anbaosin</div>
+      <div>anbaosin</div>
     </div>
   );
 }
