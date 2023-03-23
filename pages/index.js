@@ -6,6 +6,7 @@ import Footer from "../components/footer";
 import axios from "axios";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Main from "../components/home/main";
+// import Try from "../components/home/try";
 import FlashDeals from "../components/home/flashDeals";
 import Category from "../components/home/category";
 import db from "../utils/db";
@@ -39,6 +40,7 @@ export default function home({ country, products }) {
             <Category />
           </div>
           <Testimonials />
+          {/* <Try /> */}
           {/* <div className={styles.products}>
             {products.map((product) => (
               <ProductCard product={product} key={product._id} />

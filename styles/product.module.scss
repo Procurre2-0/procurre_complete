@@ -16,11 +16,11 @@
     margin-top: 1rem;
     gap: 1rem;
     @media (min-width: 800px) {
-      grid-template-columns: 1fr 300px;
+      grid-template-columns: 3fr 2fr;
       gap: 2rem;
     }
     @media (min-width: 1160px) {
-      grid-template-columns: 3fr 2fr;
+      grid-template-columns: 4fr 3fr;
       gap: 2rem;
     }
   }

@@ -13,6 +13,7 @@ import { useState } from "react";
 import Infos from "../../components/productPage/infos";
 import Reviews from "../../components/productPage/reviews";
 import ProductsSwiper from "../../components/productsSwiper";
+import Try from "../../components/try";
 export default function product({ product, related }) {
   const [activeImg, setActiveImg] = useState("");
   const country = {
@@ -37,6 +38,7 @@ export default function product({ product, related }) {
             <MainSwiper images={product.images} activeImg={activeImg} />
             <Infos product={product} setActiveImg={setActiveImg} />
           </div>
+          <Try />
           <Reviews product={product} />
           {/*
           <ProductsSwiper products={related} />

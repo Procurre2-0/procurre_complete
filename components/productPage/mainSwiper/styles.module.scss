@@ -1,7 +1,4 @@
 .swiper {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
   display: flex;
   flex-direction: column;
   @media (min-width: 500px) {
@@ -12,7 +9,7 @@
   @media (min-width: 800px) {
     flex-direction: column;
   }
-  @media (min-width: 1000px) {
+  @media (min-width: 1100px) {
     flex-direction: row-reverse;
     justify-self: flex-start;
     gap: 10px;
