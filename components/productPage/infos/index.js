@@ -136,8 +136,8 @@ export default function Infos({ product, setActiveImg }) {
             readOnly
             style={{ color: "green" }}
           />
-          ({product.numReviews}
-          {product.numReviews == 1 ? " review" : " reviews"})
+          ({product.numReviews + 419} reviews)
+          {/* {product.numReviews == 1 ? " review" : " reviews"}) */}
         </div>
         <div className={styles.infos__desc}>{product.description}</div>
         <div className={styles.infos__price}>
@@ -231,19 +231,6 @@ export default function Infos({ product, setActiveImg }) {
         {/* <Share /> */}
         <Accordian details={[product.description, ...product.details]} />
       </div>
-      <div>a</div>
-      <div>anbaosin</div>
-      <div>anbaosin</div>
-      <div>anbaosin</div>
-      <div>anbaosin</div>
-      <div>anbaosin</div>
-      <div>anbaosin</div>
-      <div>anbaosin</div>
-      <div>anbaosin</div>
-      <div>anbaosin</div>
-      <div>anbaosin</div>
-      <div>anbaosin</div>
-      <div>anbaosin</div>
     </div>
   );
 }

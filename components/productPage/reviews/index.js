@@ -12,8 +12,8 @@ export default function Reviews({ product }) {
   return (
     <div className={styles.reviews}>
       <div className={styles.reviews__container}>
-        <h1>Customer Reviews ({product.reviews.length})</h1>
-        <div className={styles.reviews__stats}>
+        {/* <h1>Customer Reviews ({product.reviews.length})</h1> */}
+        {/* <div className={styles.reviews__stats}>
           <div className={styles.reviews__stats_overview}>
             <span>Average Rating</span>
             <div className={styles.reviews__stats_overview_rating}>
@@ -46,7 +46,7 @@ export default function Reviews({ product }) {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
         {session ? (
           <AddReview product={product} setReviews={setReviews} />
         ) : (
@@ -54,11 +54,11 @@ export default function Reviews({ product }) {
             Login to add review
           </button>
         )}
-        <Table
+        {/* <Table
           reviews={reviews}
           allSizes={product.allSizes}
           colors={product.colors}
-        />
+        /> */}
       </div>
     </div>
   );
