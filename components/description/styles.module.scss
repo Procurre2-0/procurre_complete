@@ -1,5 +1,5 @@
 .desc{
-    margin: 50px;
+    margin: 40px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,5 +28,16 @@
     p{
         text-align: center;
         color: #333;
+    }
+    button{
+        margin-top: 15px;
+        min-width: 200px;
+        min-height: 60px;
+        background-color:$green-color;
+        color:white;
+        border-radius: 10px;
+        &:hover{
+            background-color: darkgreen;
+        }
     }
 }

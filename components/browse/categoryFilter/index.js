@@ -14,7 +14,14 @@ export default function CategoryFilter({
   return (
     <div className={styles.filter}>
       <h3>
-        Category <span>{show ? <FaMinus /> : <BsPlusLg />}</span>
+        Category{" "}
+        <span
+          onClick={() => {
+            setShow(!show);
+          }}
+        >
+          {show ? <FaMinus /> : <BsPlusLg />}
+        </span>
       </h3>
       {show &&
         categories.map((category, i) => (
