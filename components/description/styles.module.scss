@@ -1,5 +1,5 @@
 .desc{
-    margin: 40px 0;
+    margin: 35px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,6 +37,7 @@
         color:white;
         border-radius: 10px;
         &:hover{
+            cursor: pointer;
             background-color: darkgreen;
         }
     }
