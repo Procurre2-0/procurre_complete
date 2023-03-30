@@ -3,6 +3,7 @@ import styles from "./styles.module.scss";
 import  { useState, useRef } from 'react';
 
 export default function Row({isInput,setShowList,units,perunit,price}) {
+  console.log("values",units,perunit,price);
   const inputRef = useRef(null);
 
   const handleInputFocus = () => {
@@ -13,6 +14,11 @@ export default function Row({isInput,setShowList,units,perunit,price}) {
     setShowList(false);
   };
 
+//   if(isInput){
+//     perunit = cal()
+//     price = perunit*inputRef
+// 0
+//   }
   return (
     <>
     <div className={styles.row}>

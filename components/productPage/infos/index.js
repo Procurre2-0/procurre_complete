@@ -194,7 +194,7 @@ export default function Infos({ product, setActiveImg }) {
             </Select>
           </FormControl>
         </div>
-        <Units />
+        <Units unitList/>
         <div className={styles.infos__colors}>
           {product.colors &&
             product.colors.map((color, i) => (
