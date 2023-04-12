@@ -75,7 +75,7 @@ export default function order({
         //   `/api/order/${orderData._id}/pay`,
         //   details
         // );
-        const { data } = details
+        const { data } = details;
         dispatch({ type: "PAY_SUCCESS", payload: data });
       } catch (error) {
         dispatch({ type: "PAY_ERROR", payload: error });

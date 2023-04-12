@@ -17,7 +17,8 @@ export default function BrandsFilter({ brands, brandHandler, replaceQuery }) {
           {brands.map((brand, i) => {
             const check = replaceQuery("brand", brand);
             return (
-              <button key={i}
+              <button
+                key={i}
                 className={`${styles.filter__brand} ${
                   check.active ? styles.activeFilter : ""
                 }`}

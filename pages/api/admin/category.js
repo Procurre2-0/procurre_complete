@@ -8,7 +8,7 @@ const handler = nc().use(auth).use(admin);
 
 handler.post(async (req, res) => {
   try {
-    const { name } = req.body;
+    const { name, imagelink } = req.body;
     db.connectDb();
     const test = await Category.findOne({ name });
     if (test) {
@@ -16,7 +16,7 @@ handler.post(async (req, res) => {
         .status(400)
         .json({ message: "Category already exist, Try a different name" });
     }
-    await new Category({ name, slug: slugify(name) }).save();
+    await new Category({ name, imagelink, slug: slugify(name) }).save();
 
     db.disconnectDb();
     res.json({

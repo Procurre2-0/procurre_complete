@@ -41,7 +41,7 @@ export default function product({ product, related }) {
           <Try />
           <Reviews product={product} />
 
-          <ProductsSwiper products={related} />
+          {/* <ProductsSwiper products={related} /> */}
         </div>
       </div>
     </>

@@ -16,6 +16,12 @@ const categorySchema = new mongoose.Schema(
       lowercase: true,
       index: true,
     },
+    imagelink: {
+      type: String,
+      required: true,
+      minlength: [2, "must be atleast 2 charcters"],
+      maxlength: [32, "must be atleast 2 charcters"],
+    },
   },
   {
     timestamps: true,

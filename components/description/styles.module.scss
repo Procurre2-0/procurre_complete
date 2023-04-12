@@ -33,12 +33,12 @@
         margin-top: 15px;
         min-width: 200px;
         min-height: 60px;
-        background-color:$green-color;
+        background-color:$blue-color;
         color:white;
         border-radius: 10px;
         &:hover{
             cursor: pointer;
-            background-color: darkgreen;
+            background-color: $dark-blue-color;
         }
     }
 }
