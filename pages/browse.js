@@ -4,6 +4,9 @@ import Product from "../models/Product";
 import Category from "../models/Category";
 import Header from "../components/header";
 import SubCategory from "../models/SubCategory";
+import { useDispatch, useSelector } from "react-redux";
+import { useMediaQuery } from "react-responsive";
+import { Swiper, SwiperSlide } from "swiper/react";
 import {
   filterArray,
   randomize,
@@ -24,6 +27,11 @@ import { useRouter } from "next/router";
 import { Pagination } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+
+import { FreeMode } from "swiper";
 export default function Browse({
   categories,
   subCategories,
@@ -37,7 +45,14 @@ export default function Browse({
   paginationCount,
   country,
 }) {
+  const isSmall = useMediaQuery({ query: "(max-width:910px)" });
   const router = useRouter();
+  const dispatch = useDispatch();
+  const { filterSidebar } = useSelector((state) => ({ ...state }));
+  const expand = filterSidebar.filterSidebar;
+  const handleChange = () => {
+    dispatch(toggleSidebar());
+  };
   const filter = ({
     search,
     category,
@@ -195,6 +210,7 @@ export default function Browse({
   }, []);
   console.log(scrollY, height);
   //---------------------------------
+
   return (
     <div className={styles.browse}>
       <div ref={headerRef}>
@@ -204,11 +220,38 @@ export default function Browse({
         <div ref={el}>
           <div className={styles.browse__path}>Home / Browse</div>
           <div className={styles.browse__tags}>
-            {categories.map((c) => (
-              <Link href="" key={c._id}>
-                <a>{c.name}</a>
-              </Link>
-            ))}
+            <Swiper
+              slidesPerView={5}
+              spaceBetween={30}
+              freeMode={true}
+              modules={[FreeMode]}
+              className="swiper"
+              breakpoints={{
+                300: {
+                  slidesPerView: 2,
+                },
+                500: {
+                  slidesPerView: 3,
+                },
+                700: {
+                  slidesPerView: 4,
+                },
+                1000: {
+                  slidesPerView: 5,
+                },
+                1400: {
+                  slidesPerView: 6,
+                },
+              }}
+            >
+              {categories.map((c) => (
+                <SwiperSlide>
+                  <Link href="" key={c._id}>
+                    <a>{c.name}</a>
+                  </Link>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
         <div
@@ -217,7 +260,9 @@ export default function Browse({
           }`}
         >
           <div
-            className={`${styles.browse__store_filters} ${styles.scrollbar}`}
+            className={`${styles.browse__store_filters} ${styles.scrollbar} ${
+              isSmall && styles.compress
+            }`}
           >
             <button
               className={styles.browse__clearBtn}
@@ -263,15 +308,15 @@ export default function Browse({
             />
           </div>
           <div className={styles.browse__store_products_wrap}>
-            <HeadingFilters
+            {/* <HeadingFilters
               priceHandler={priceHandler}
               multiPriceHandler={multiPriceHandler}
               shippingHandler={shippingHandler}
               ratingHandler={ratingHandler}
               replaceQuery={replaceQuery}
               sortHandler={sortHandler}
-            />
-            <div className={styles.browse__store_products}>
+            /> */}
+            <div className={styles.products}>
               {products.map((product) => (
                 <ProductCard product={product} key={product._id} />
               ))}

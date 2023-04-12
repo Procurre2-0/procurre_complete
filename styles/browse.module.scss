@@ -9,6 +9,9 @@
     grid-template-columns: 300px 1fr;
     gap: 1rem;
     margin-top: 2rem;
+    @media (max-width:910px) {
+      grid-template-columns: 0 1fr;
+    }
     &_filters {
       position: relative;
       width: 100%;
@@ -27,11 +30,13 @@
         background: #ccc;
       }
     }
-    &_products {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
+    
+  }
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-evenly;
   }
   &__clearBtn {
     width: 180px;
@@ -74,6 +79,9 @@
   align-items: center;
   justify-content: flex-end;
   padding: 2rem;
+  @media (max-width:910px) {
+    justify-content: center;
+  }
 }
 .fixed {
   position: relative;
@@ -88,5 +96,35 @@
     position: absolute;
     top: 2rem;
     left: 316px;
+    @media (max-width:910px) {
+      position: absolute;
+      top: 2rem;
+      left: 16px;
+    }
   }
+}
+.compress{
+  width: 0 !important;
+}
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
