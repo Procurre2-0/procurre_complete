@@ -13,7 +13,7 @@ import {
   removeDuplicates,
 } from "../utils/arrays_utils";
 import Link from "next/link";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "../components/productCard";
 import CategoryFilter from "../components/browse/categoryFilter";
 import SizesFilter from "../components/browse/sizesFilter";
 import ColorsFilter from "../components/browse/colorsFilter";
@@ -49,10 +49,10 @@ export default function Browse({
   const router = useRouter();
   const dispatch = useDispatch();
   const { filterSidebar } = useSelector((state) => ({ ...state }));
-  const expand = filterSidebar.filterSidebar;
-  const handleChange = () => {
-    dispatch(toggleSidebar());
-  };
+  // const expand = filterSidebar.filterSidebar;
+  // const handleChange = () => {
+  //   dispatch(toggleSidebar());
+  // };
   const filter = ({
     search,
     category,
@@ -244,8 +244,8 @@ export default function Browse({
                 },
               }}
             >
-              {categories.map((c) => (
-                <SwiperSlide>
+              {categories.map((c,i) => (
+                <SwiperSlide key={i}>
                   <Link href="" key={c._id}>
                     <a>{c.name}</a>
                   </Link>
