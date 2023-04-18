@@ -4,10 +4,8 @@ import Order from "../../models/Order";
 import User from "../../models/User";
 import { IoIosArrowForward } from "react-icons/io";
 import db from "../../utils/db";
-import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { useReducer, useEffect } from "react";
 import axios from "axios";
-import StripePayment from "../../components/stripePayment";
 import { getSession } from "next-auth/react";
 
 function reducer(state, action) {
@@ -22,69 +20,107 @@ function reducer(state, action) {
       return { ...state, loading: false, success: false, error: false };
   }
 }
-export default function order({
-  orderData,
-  // paypal_client_id,
-  // stripe_public_key,
-}) {
-  const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
+export default function order({orderData}) {
   const [dispatch] = useReducer(reducer, {
     loading: true,
     error: "",
     success: "",
   });
-  // useEffect(() => {
-  //   if (!orderData._id) {
-  //     dispatch({
-  //       type: "PAY_RESET",
-  //     });
-  //   } else {
-  //     paypalDispatch({
-  //       type: "resetOptions",
-  //       value: {
-  //         "client-id": paypal_client_id,
-  //         currency: "USD",
-  //       },
-  //     });
-  //     paypalDispatch({
-  //       type: "setLoadingStatus",
-  //       value: "pending",
-  //     });
-  //   }
-  // }, [order]);
-  function createOrderHanlder(data, actions) {
-    return actions.order
-      .create({
-        purchase_units: [
-          {
-            amount: {
-              value: orderData.total,
-            },
-          },
-        ],
-      })
-      .then((order_id) => {
-        return order_id;
+  useEffect(() => {
+    if (!orderData._id) {
+      dispatch({
+        type: "PAY_RESET",
       });
-  }
-  function onApproveHandler(data, actions) {
-    return actions.order.capture().then(async function (details) {
-      try {
-        dispatch({ type: "PAY_REQUEST" });
-        // const { data } = await axios.put(
-        //   `/api/order/${orderData._id}/pay`,
-        //   details
-        // );
-        const { data } = details;
-        dispatch({ type: "PAY_SUCCESS", payload: data });
-      } catch (error) {
-        dispatch({ type: "PAY_ERROR", payload: error });
-      }
+    }
+  }, []);
+  // function createOrderHanlder(data, actions) {
+  //   return actions.order
+  //     .create({
+  //       purchase_units: [
+  //         {
+  //           amount: {
+  //             value: orderData.total,
+  //           },
+  //         },
+  //       ],
+  //     })
+  //     .then((order_id) => {
+  //       return order_id;
+  //     });
+  // }
+  // function onApproveHandler(data, actions) {
+  //   return actions.order.capture().then(async function (details) {
+  //     try {
+  //       dispatch({ type: "PAY_REQUEST" });
+  //       const { data } = await axios.put(
+  //         `/api/order/${orderData._id}/pay`,
+  //         details
+  //       );
+  //       // const { data } = details;
+  //       dispatch({ type: "PAY_SUCCESS", payload: data });
+  //     } catch (error) {
+  //       dispatch({ type: "PAY_ERROR", payload: error });
+  //     }
+  //   });
+  // }
+  // function onErroHandler(error) {
+  //   console.log(error);
+  // }
+
+  const initializeRazorpay = () => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+
+      document.body.appendChild(script);
     });
-  }
-  function onErroHandler(error) {
-    console.log(error);
-  }
+  };
+
+  const handlePayment = async () => {
+    const res = await initializeRazorpay();
+
+    if (!res) {
+      alert("Razorpay SDK Failed to load");
+      return;
+    }
+
+    // Make API call to the serverless API
+
+    const { data } = await axios.post("/api/payment", {
+      payment_capture:1, amount:orderData.total ,currency:"INR"
+    });
+    console.log(data);
+    var options = {
+      key: process.env.RAZORPAY_API_KEY, // Enter the Key ID generated from the Dashboard
+      name: "the RR Group cto",
+      currency: data.currency,
+      amount: data.amount,
+      order_id: data.id,
+      description: "Thankyou for your test donation",
+      image: "https://manuarora.in/logo.png",
+      handler: function (response) {
+        // Validate payment at server - using webhooks is a better idea.
+        alert(response.razorpay_payment_id);
+        alert(response.razorpay_order_id);
+        alert(response.razorpay_signature);
+      },
+      prefill: {
+        name: "Mahavir Goyal",
+        email: "mahavirgoyal32@gmail.com",
+        contact: "9592680923",
+      },
+    };
+
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
+  };
   return (
     <>
       <Header country="country" />
@@ -241,26 +277,11 @@ export default function order({
             </div>
             {!orderData.isPaid && (
               <div className={styles.order__payment}>
-                {orderData.paymentMethod == "paypal" && (
+                {/* {orderData.paymentMethod == "razorpay" && ( */}
                   <div>
-                    {isPending ? (
-                      <span>loading...</span>
-                    ) : (
-                      <PayPalButtons
-                        createOrder={createOrderHanlder}
-                        onApprove={onApproveHandler}
-                        onError={onErroHandler}
-                      ></PayPalButtons>
-                    )}
+                    <button onClick={handlePayment}> Razorpay </button>
                   </div>
-                )}
-                {/* {orderData.paymentMethod == "credit_card" && (
-                  // <StripePayment
-                  //   total={orderData.total}
-                  //   order_id={orderData._id}
-                  //   stripe_public_key={stripe_public_key}
-                  // />
-                )} */}
+                {/* )} */}
                 {orderData.paymentMethod == "cash" && (
                   <div className={styles.cash}>cash</div>
                 )}
@@ -280,14 +301,10 @@ export async function getServerSideProps(context) {
   const order = await Order.findById(id)
     .populate({ path: "user", model: User })
     .lean();
-  // let paypal_client_id = process.env.PAYPAL_CLIENT_ID;
-  // let stripe_public_key = process.env.STRIPE_PUBLIC_KEY;
   db.disconnectDb();
   return {
     props: {
       orderData: JSON.parse(JSON.stringify(order)),
-      // paypal_client_id,
-      // stripe_public_key,
     },
   };
 }

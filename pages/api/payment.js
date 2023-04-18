@@ -12,11 +12,11 @@ handler.post(async (req, res) => {
       key_id: process.env.RAZORPAY_API_KEY,
       key_secret: process.env.RAZORPAY_SECRET_KEY,
     });
-
+    const {payment_capture, amount,currency} = req.body;
     // Create an order -> generate the OrderID -> Send it to the Front-end
-    const payment_capture = 1;
-    const amount = 499;
-    const currency = "INR";
+    // const payment_capture = 1;
+    // const amount = 499;
+    // const currency = "INR";
     const options = {
       amount: (amount * 100).toString(),
       currency,
