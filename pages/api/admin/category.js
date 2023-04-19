@@ -8,7 +8,8 @@ const handler = nc().use(auth).use(admin);
 
 handler.post(async (req, res) => {
   try {
-    const { name } = req.body;
+    const { name, image } = req.body;
+    console.log("randin",image);
     db.connectDb();
     const test = await Category.findOne({ name });
     if (test) {
@@ -16,7 +17,8 @@ handler.post(async (req, res) => {
         .status(400)
         .json({ message: "Category already exist, Try a different name" });
     }
-    await new Category({ name, slug: slugify(name) }).save();
+    console.log("zzzzzzzzz",image);
+    await new Category({ name, image:JSON.stringify(image),  slug: slugify(name) }).save();
 
     db.disconnectDb();
     res.json({
@@ -45,13 +47,13 @@ handler.delete(async (req, res) => {
 });
 handler.put(async (req, res) => {
   try {
-    const { id, name } = req.body;
+    const { id, name, imagelink } = req.body;
     db.connectDb();
-    await Category.findByIdAndUpdate(id, { name });
+    await Category.findByIdAndUpdate(id, { name }, {imagelink});
     db.disconnectDb();
     return res.json({
       message: "Category has been updated successfuly",
-      categories: await Category.find({}).sort({ createdAt: -1 }),
+      categories: await Category.find({}).sort({ createdAt: -1 }).lean(),
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

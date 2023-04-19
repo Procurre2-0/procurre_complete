@@ -7,7 +7,7 @@ import db from "../../utils/db";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { useReducer, useEffect } from "react";
 import axios from "axios";
-import StripePayment from "../../components/stripePayment";
+// import StripePayment from "../../components/stripePayment";
 import { getSession } from "next-auth/react";
 
 function reducer(state, action) {
