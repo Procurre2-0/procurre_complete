@@ -1,5 +1,12 @@
 export const paymentMethods = [
   {
+    name: "Razorpay",
+    id: "razorpay",
+    description:
+      "If you don't have a Razorpay account,you can also pay via Razorpay with your credit card or bank debit card. Payment can be submitted in an currency!",
+    images: [],
+  },
+  {
     name: "Paypal",
     id: "paypal",
     description:

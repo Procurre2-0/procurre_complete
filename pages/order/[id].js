@@ -20,7 +20,7 @@ function reducer(state, action) {
       return { ...state, loading: false, success: false, error: false };
   }
 }
-export default function order({orderData}) {
+export default function order({ orderData }) {
   const [dispatch] = useReducer(reducer, {
     loading: true,
     error: "",
@@ -94,7 +94,9 @@ export default function order({orderData}) {
     // Make API call to the serverless API
 
     const { data } = await axios.post("/api/payment", {
-      payment_capture:1, amount:orderData.total ,currency:"INR"
+      payment_capture: 1,
+      amount: orderData.total,
+      currency: "INR",
     });
     console.log(data);
     var options = {
@@ -278,9 +280,9 @@ export default function order({orderData}) {
             {!orderData.isPaid && (
               <div className={styles.order__payment}>
                 {/* {orderData.paymentMethod == "razorpay" && ( */}
-                  <div>
-                    <button onClick={handlePayment}> Razorpay </button>
-                  </div>
+                <div>
+                  <button onClick={handlePayment}> Razorpay </button>
+                </div>
                 {/* )} */}
                 {orderData.paymentMethod == "cash" && (
                   <div className={styles.cash}>cash</div>
