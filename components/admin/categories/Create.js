@@ -64,7 +64,7 @@ export default function Create({ setCategories }) {
         name,
         image: uploaded_image,
       });
-      setCategories(data);
+      setCategories(data.categories);
       setName("");
       setimagelink([]);
 

@@ -7,7 +7,7 @@ import styles from "./styles.module.scss";
 export default function ListItem({ category, setCategories }) {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
-  const [imagelink, setImagelink] = useState("");
+  // const [imagelink, setImagelink] = useState("");
   const input = useRef(null);
   const handleRemove = async (id) => {
     try {
@@ -25,7 +25,6 @@ export default function ListItem({ category, setCategories }) {
       const { data } = await axios.put("/api/admin/category", {
         id,
         name,
-        imagelink
       });
       setCategories(data.categories);
       setOpen(false);
@@ -34,7 +33,7 @@ export default function ListItem({ category, setCategories }) {
       toast.error(error.response.data.message);
     }
   };
-  console.log("nhym",JSON.stringify(category));
+  console.log("nhym", JSON.stringify(category));
   // console.log("nhym3",JSON.stringify(name));
   return (
     <li className={styles.list__item}>
@@ -42,7 +41,6 @@ export default function ListItem({ category, setCategories }) {
         className={open ? styles.open : ""}
         type="text"
         value={name ? name : category.name}
-        
         onChange={(e) => setName(e.target.value)}
         disabled={!open}
         ref={input}
@@ -60,7 +58,6 @@ export default function ListItem({ category, setCategories }) {
             onClick={() => {
               setOpen(false);
               setName("");
-              setImagelink("");
             }}
           >
             Cancel
