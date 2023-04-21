@@ -21,7 +21,6 @@ import {
 import { useMediaQuery } from "react-responsive";
 import ProductsSwiper from "../components/productsSwiper";
 import Product from "../models/Product";
-import ProductCard from "../components/productCard";
 import Testimonials from "../components/home/testimonial";
 export default function home({ country, products }) {
   console.log("products", products);

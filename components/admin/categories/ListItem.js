@@ -7,6 +7,7 @@ import styles from "./styles.module.scss";
 export default function ListItem({ category, setCategories }) {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
+  // const [imagelink, setImagelink] = useState("");
   const input = useRef(null);
   const handleRemove = async (id) => {
     try {
@@ -32,6 +33,8 @@ export default function ListItem({ category, setCategories }) {
       toast.error(error.response.data.message);
     }
   };
+  console.log("nhym", JSON.stringify(category));
+  // console.log("nhym3",JSON.stringify(name));
   return (
     <li className={styles.list__item}>
       <input

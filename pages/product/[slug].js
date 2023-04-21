@@ -14,7 +14,7 @@ import Infos from "../../components/productPage/infos";
 import Reviews from "../../components/productPage/reviews";
 import ProductsSwiper from "../../components/productsSwiper";
 import Try from "../../components/try";
-export default function product({ product, related }) {
+export default function product({ product }) {
   const [activeImg, setActiveImg] = useState("");
   const country = {
     name: "Morocco",
@@ -29,7 +29,7 @@ export default function product({ product, related }) {
       <div className={styles.product}>
         <div className={styles.product__container}>
           <div className={styles.path}>
-            Home / {product.category.name}
+            Home / {product.category?.name}
             {product.subCategories.map((sub, i) => (
               <span key={i}>/{sub.name}</span>
             ))}
@@ -41,7 +41,7 @@ export default function product({ product, related }) {
           <Try />
           <Reviews product={product} />
 
-          <ProductsSwiper products={related} />
+          {/* <ProductsSwiper products={related} /> */}
         </div>
       </div>
     </>
@@ -124,7 +124,7 @@ export async function getServerSideProps(context) {
           array.findIndex((el2) => el2.size === element.size) === index
       ),
   };
-  const related = await Product.find({ category: product.category._id }).lean();
+  // const related = await Product.find({ category: product.category._id }).lean();
   //------------
   function calculatePercentage(num) {
     return (
@@ -139,11 +139,11 @@ export async function getServerSideProps(context) {
     ).toFixed(1);
   }
   db.disconnectDb();
-  console.log("related", related);
+  // console.log("related", related);
   return {
     props: {
       product: JSON.parse(JSON.stringify(newProduct)),
-      related: JSON.parse(JSON.stringify(related)),
+      // related: JSON.parse(JSON.stringify(related)),
     },
   };
 }
