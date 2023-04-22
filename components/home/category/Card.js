@@ -1,32 +1,20 @@
 import Link from "next/link";
 import styles from "./styles.module.scss";
-export default function FlashCard({ product }) {
+export default function CategorySwiper({ category }) {
+  console.log("cc",category);
+  var imageLink = JSON.parse(category.image[0])
+
+  console.log("sss",imageLink);
   return (
     <div className={styles.card}>
       <div className={styles.card__img}>
-        <Link href={product.link}>
-          <img src={product.image} alt="" />
+        <Link href={`/browse?category=${category._id}`} >
+          <img src={imageLink[0].url} alt="" />
         </Link>
         <div className={styles.flash}>
-          <span>tubes</span>
+          <span>{category.name}</span>
         </div>
-        {/* <div className={styles.flash}>
-          <span>-{product.discount}%</span>
-        </div> */}
       </div>
-      {/* <div className={styles.card__price}>
-        <span>
-          USD{(product.price - product.price / product.discount).toFixed(2)}$
-        </span>
-        <span>
-          -USD
-          {(
-            product.price -
-            (product.price - product.price / product.discount)
-          ).toFixed(2)}
-          $
-        </span>
-      </div> */}
     </div>
   );
 }

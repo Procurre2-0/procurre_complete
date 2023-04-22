@@ -8,7 +8,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import Main from "../components/home/main";
 // import Try from "../components/home/try";
 import FlashDeals from "../components/home/flashDeals";
-import Category from "../components/home/category";
+import Categories from "../components/home/category";
 import db from "../utils/db";
 import {
   gamingSwiper,
@@ -21,8 +21,10 @@ import {
 import { useMediaQuery } from "react-responsive";
 import ProductsSwiper from "../components/productsSwiper";
 import Product from "../models/Product";
+import Category from "../models/Category";
+import ProductCard from "../components/productCard";
 import Testimonials from "../components/home/testimonial";
-export default function home({ country, products }) {
+export default function home({ country, products ,categories}) {
   console.log("products", products);
   const { data: session } = useSession();
   const isMedium = useMediaQuery({ query: "(max-width:850px)" });
@@ -36,7 +38,7 @@ export default function home({ country, products }) {
           <Description />
           <FlashDeals />
           <div className={styles.home__category}>
-            <Category />
+            <Categories categories={categories} />
           </div>
           <Testimonials />
           {/* <Try /> */}
@@ -54,6 +56,7 @@ export default function home({ country, products }) {
 export async function getServerSideProps() {
   db.connectDb();
   let products = await Product.find().sort({ createdAt: -1 }).lean();
+  let categories = await Category.find({}).sort({ updatedAt: -1 }).lean();
   let data = await axios
     .get("https://api.ipregistry.co/?key=r208izz0q0icseks")
     .then((res) => {
@@ -65,7 +68,7 @@ export async function getServerSideProps() {
   return {
     props: {
       products: JSON.parse(JSON.stringify(products)),
-      //country: { name: data.name, flag: data.flag.emojitwo },
+      categories: JSON.parse(JSON.stringify(categories)),
       country: {
         name: "India",
         flag: "https://cdn-icons-png.flaticon.com/512/197/197551.png?w=360",
@@ -73,15 +76,4 @@ export async function getServerSideProps() {
     },
   };
 }
-/*
-            <ProductsSwiper
-            products={gamingSwiper}
-            header="For Gamers"
-            bg="#2f82ff"
-          />
-          <ProductsSwiper
-            products={homeImprovSwiper}
-            header="House Improvements"
-            bg="#5a31f4"
-          />
-            */
+
