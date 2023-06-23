@@ -8,7 +8,7 @@ import Order from "../../models/Order";
 import styles from "../../styles/profile.module.scss";
 import { FiExternalLink } from "react-icons/fi";
 import slugify from "slugify";
-export default function orders({ user, tab, orders }) {
+export default function Orders({ user, tab, orders }) {
   const router = useRouter();
   return (
     <Layout session={user.user} tab={tab}>
@@ -94,13 +94,13 @@ export default function orders({ user, tab, orders }) {
 }
 export async function getServerSideProps(ctx) {
   const { query, req } = ctx;
-  console.log("filterctxreq",req);
-  console.log("filterctx",ctx);
+  console.log("filterctxreq", req);
+  console.log("filterctx", ctx);
   const session = await getSession({ req });
   const tab = query.tab || 0;
   //------------
   const filter = query.q?.split("__")[1];
-  
+
   let orders = [];
   if (!filter) {
     orders = await Order.find({ user: session?.user.id })

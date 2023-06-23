@@ -14,7 +14,7 @@ import Infos from "../../components/productPage/infos";
 import Reviews from "../../components/productPage/reviews";
 import ProductsSwiper from "../../components/productsSwiper";
 import Try from "../../components/try";
-export default function product({ product }) {
+export default function Productt({ product }) {
   const [activeImg, setActiveImg] = useState("");
   const country = {
     name: "Morocco",

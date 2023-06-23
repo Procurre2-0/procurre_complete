@@ -13,7 +13,7 @@ import "swiper/css/pagination";
 
 // import required modules
 import { Navigation } from "swiper";
-export default function index() {
+export default function Index() {
   const isMedium = useMediaQuery({ query: "(min-width:500px)" });
   return (
     <>

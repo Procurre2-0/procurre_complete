@@ -21,6 +21,7 @@ export const config = {
     bodyParser: false,
   },
 };
+
 handler.post(async (req, res) => {
   try {
     const { path } = req.body;

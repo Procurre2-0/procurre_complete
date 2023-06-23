@@ -9,12 +9,12 @@ import Shipping from "../components/checkout/shipping";
 import Products from "../components/checkout/products";
 import Payment from "../components/checkout/payment";
 import Summary from "../components/checkout/summary";
-export default function checkout({ cart, user }) {
+export default function Checkout({ cart, user }) {
   const [addresses, setAddresses] = useState(user?.address || []);
   const [paymentMethod, setPaymentMethod] = useState("");
   const [totalAfterDiscount, setTotalAfterDiscount] = useState("");
   const [selectedAddress, setSelectedAddress] = useState("");
-  
+
   useEffect(() => {
     let check = addresses.find((ad) => ad.active == true);
     if (check) {
@@ -22,7 +22,7 @@ export default function checkout({ cart, user }) {
     } else {
       setSelectedAddress("");
     }
-    console.log("check",addresses);
+    console.log("check", addresses);
   }, [addresses]);
   return (
     <>

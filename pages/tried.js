@@ -1,5 +1,4 @@
-export default function tried({}) {
-
+export default function Tried({}) {
   const initializeRazorpay = () => {
     return new Promise((resolve) => {
       const script = document.createElement("script");
@@ -54,29 +53,27 @@ export default function tried({}) {
     paymentObject.open();
   };
 
-
-
   // const handlePayment = async () => {
 
-    // const options = {
-    //   amount: 1000, // amount in paise
-    //   currency: "INR",
-    //   receipt: "receipt_order_12345",
-    //   payment_capture: 1,
-    // };
-    // try {
-    //   const response = await fetch("/api/createOrder", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(options),
-    //   });
-    //   const order = await response.json();
-    //   console.log(order);
-    // } catch (error) {
-    //   console.error(error);
-    // }
+  // const options = {
+  //   amount: 1000, // amount in paise
+  //   currency: "INR",
+  //   receipt: "receipt_order_12345",
+  //   payment_capture: 1,
+  // };
+  // try {
+  //   const response = await fetch("/api/createOrder", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(options),
+  //   });
+  //   const order = await response.json();
+  //   console.log(order);
+  // } catch (error) {
+  //   console.error(error);
+  // }
   // };
 
   return (

@@ -1,6 +1,6 @@
 import { getSession } from "next-auth/react";
 import Layout from "../../components/profile/layout";
-export default function profile({ user, tab }) {
+export default function Profile({ user, tab }) {
   return <Layout session={user.user} tab={tab}></Layout>;
 }
 

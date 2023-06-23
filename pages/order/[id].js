@@ -20,7 +20,7 @@ function reducer(state, action) {
       return { ...state, loading: false, success: false, error: false };
   }
 }
-export default function order({ orderData }) {
+export default function Orderr({ orderData }) {
   const [dispatch] = useReducer(reducer, {
     loading: true,
     error: "",

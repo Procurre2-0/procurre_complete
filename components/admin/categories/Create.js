@@ -26,23 +26,23 @@ export default function Create({ setCategories }) {
       ) */
   });
   var uploaded_image = [];
-  const createProductHandler = async () => {
-    if (imagelink) {
-      let temp = imagelink.map((img) => {
-        return dataURItoBlob(img);
-      });
-      const path = "product images";
-      let formData = new FormData();
-      formData.append("path", path);
-      temp.forEach((imagelink) => {
-        formData.append("file", imagelink);
-      });
-      uploaded_image = await uploadImages(formData);
-      console.log("uploaded_image", uploaded_image);
-    } else {
-      alert("xxxxxx");
-    }
-  };
+  // const createProductHandler = async () => {
+  //   if (imagelink) {
+  //     let temp = imagelink.map((img) => {
+  //       return dataURItoBlob(img);
+  //     });
+  //     const path = "product images";
+  //     let formData = new FormData();
+  //     formData.append("path", path);
+  //     temp.forEach((imagelink) => {
+  //       formData.append("file", imagelink);
+  //     });
+  //     uploaded_image = await uploadImages(formData);
+  //     console.log("uploaded_image", uploaded_image);
+  //   } else {
+  //     alert("xxxxxx");
+  //   }
+  // };
   const submitHandler = async () => {
     // alert("asdf");
     try {

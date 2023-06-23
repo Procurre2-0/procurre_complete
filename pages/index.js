@@ -22,7 +22,7 @@ import { useMediaQuery } from "react-responsive";
 import ProductsSwiper from "../components/productsSwiper";
 import Product from "../models/Product";
 import Testimonials from "../components/home/testimonial";
-export default function home({ country, products }) {
+export default function Home({ country, products }) {
   console.log("products", products);
   const { data: session } = useSession();
   const isMedium = useMediaQuery({ query: "(max-width:850px)" });
